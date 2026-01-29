@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wedding E‑Invite</title>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+    :root {
+      --pink: #f8c9d4;
+      --pink-soft: #fbe3ec;
+      --grey: #6f6f75;
+      --light-grey: #f2f2f5;
+      --white: #ffffff;
+      --black: #111111;
+      --green: #4b5320;     /* army green */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+    }
+
+    html { 
+        scroll-behavior: smooth; 
+    }
+
+    body { 
+      background: radial-gradient(circle at top, var(--pink-soft), var(--white)); 
+      color: var(--black); display: flex; 
+      justify-content: center; 
+    }
+
+    /* MAIN WRAPPER */ 
+    .card { 
+      width: 100%;
+    }
+
+    /* HERO SECTION */ 
+    .hero { 
+      min-height: 100vh; 
+      background: 
+        linear-gradient(to bottom right, var(--pink), var(--white)),
+        url("images/background-01.png") center/cover no-repeat;
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center; 
+      align-items: center; 
+      text-align: center; 
+      padding: 40px 20px; 
+    } 
+      
+    .hero-info-tag { 
+      font-size: clamp(0.8rem, 2.5vw, 1.25rem); 
+      letter-spacing: 0.25em; color: var(--grey); 
+    } 
+    
+    .hero-info-line { 
+      width: 60px; 
+      height: 1px; 
+      background: var(--black); 
+      opacity: 0.25; 
+      margin: 12px auto 18px; } 
+      
+    .hero-info-names { 
+      font-family: "Playfair Display", serif; 
+      font-size: clamp(2rem, 8vw, 4rem); 
+      letter-spacing: 0.08em; 
+      text-transform: uppercase; 
+      color: var(--green);
+    } 
+    
+    .hero-info-ampersand { 
+      font-size: clamp(2.5rem, 10vw, 5rem); 
+      opacity: 0.7; 
+    } 
+      
+    .hero-info-subtitle { 
+      font-family: "Brush Script MT", cursive; 
+      font-size: clamp(1.3rem, 5vw, 2.2rem); 
+      color: var(--black);
+      opacity: 0.75;
+      margin: 20px 0 40px; 
+    } 
+       
+    .hero-info-date { 
+      font-size: clamp(0.8rem, 2.5vw, 1.1rem); 
+      letter-spacing: 0.16em; 
+      text-transform: uppercase; 
+      border: 1px solid rgba(0, 0, 0, 0.18); 
+      padding: 10px 18px; 
+      border-radius: 999px; 
+      display: inline-flex; 
+      gap: 10px; 
+      background: rgba(255, 255, 255, 0.7); 
+      backdrop-filter: blur(6px); 
+      margin-bottom: 40px; } 
+      
+    .hero a { 
+      margin-top: 20px; 
+      padding: 14px 32px; 
+      background: var(--green); 
+      color: var(--white); 
+      text-decoration: none; 
+      border-radius: 40px; 
+      font-size: clamp(1rem, 3vw, 1.2rem); 
+      transition: 0.3s; } 
+      
+    .hero a:hover { 
+      background: var(--pink); 
+      color: var(--green); }
+
+    /* SECTIONS */ 
+    section { 
+      padding: 60px 8%; 
+      background: linear-gradient(to bottom right, var(--pink), var(--white)); 
+      text-align: center; }
+
+    /* TITLES */
+    .sub-gallery-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: clamp(2rem, 6vw, 3rem);
+      color: var(--black);
+      opacity: 0.75;
+    }
+
+    .sub-gallery-title-line {
+      width: 60px;
+      height: 1px;
+      background: var(--black);
+      opacity: 0.25;
+      margin: 0 auto 25px;
+    }
+
+    /* GALLERY GRID */
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+        margin-bottom: 40px; /* spacing between sections */
+    }
+
+    .gallery-grid img {
+        width: 100%;
+        aspect-ratio: 4 / 5; /* keeps consistent shape */ 
+        object-fit: cover; 
+        border-radius: 14px; 
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); 
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        opacity: 0;
+        transform: translateX(40px);
+        animation: slideIn 1.2s ease-out forwards;
+    }
+
+    /* GALLERY TEXT */
+    .gallery p {
+        color: #4b4b4b;
+        font-size: clamp(1.1rem, 4vw, 1.9rem);    
+        font-family: "Brush Script MT", cursive;
+        letter-spacing: .10rem;
+        font-weight: lighter;
+        margin-top: 20px;
+    }  
+
+    /* CONTENT SECTION (SECTION 4) */
+    .content { 
+      padding: 40px 10%; 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 40px;
+    } 
+    
+    @media (max-width: 900px) { .content { grid-template-columns: 1fr; } .vertical-divider { display: none; } }
+
+    /* DETAILS GRID */ 
+    .details-grid { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 18px 26px; 
+    } 
+    
+    @media (max-width: 600px) { .details-grid { grid-template-columns: 1fr; } }
+
+    h2 {
+        text-align: center;
+        font-size: clamp(1.8rem, 6vw, 2.8rem);
+        color: var(--green);
+        margin-bottom: 40px;
+        font-weight: 600;
+        animation: fadeUp 1s ease;
+    }
+
+    .gallery-grid img:nth-child(1) { animation-delay: 0.1s; }
+    .gallery-grid img:nth-child(2) { animation-delay: 0.25s; }
+    .gallery-grid img:nth-child(3) { animation-delay: 0.4s; }
+    .gallery-grid img:nth-child(4) { animation-delay: 0.55s; }
+
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+      transition: transform 0.4s ease, filter 0.4s ease;
+      z-index: 2;
+    }  
+
+    /* CONTENT */
+    .content {
+      padding: 40px 10%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 15px;
+    }
+
+    .section-heading {
+      font-family: "Playfair Display", serif;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .section-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #444;
+      margin-bottom: 25px;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px 26px;
+    }
+
+    .detail-label {
+      font-size: 0.95rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 4px;
+    }
+
+    .detail-value {
+      font-size: 1.2rem;
+      color: var(--green);
+    }
+
+    .vertical-divider {
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.12), transparent);
+      margin: 0 auto;
+    }
+
+    /* RSVP */
+    .rsvp-card {
+      background: var(--white);
+      border-radius: 18px;
+      padding: 22px 20px;
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .rsvp-title {
+      font-size: 1.10rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 10px;
+    }
+
+    .rsvp-text {
+      font-size: 1rem;
+      color: #333;
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 10px 20px;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--pink);
+      color: var(--green);
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid rgba(0, 0, 0, 0.06);
+      padding: 18px 10% 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--grey);
+      flex-wrap: wrap;
+    }
+
+    /* Arrow Button */
+    .scroll-arrow {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        border: none;
+        background: var(--green);
+        color: #fff;
+        font-size: 26px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        z-index: 999;
+        opacity: 0; /* hidden by default */
+        pointer-events: none; /* prevent clicking when hidden */
+    }
+
+    .scroll-arrow.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .scroll-arrow:hover {
+    transform: translateY(-3px);
+    background: var(--pink);
+    color: var(--green);
+  }
+
+  /* ANIMATIONS */ 
+  @keyframes slideIn { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+
+</style>
+</head>
+
+<body>
+
+<main class="card">
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-info-tag">YOU ARE WARMLY INVITED</div>
+        <div class="hero-info-line"></div>
+
+        <h1 class="hero-info-names">ROSS <span class="hero-info-ampersand">&amp;</span> MELLY</h1>
+        <p class="hero-info-subtitle">Celebrate Our Wedding Day</p>
+
+        <div class="hero-info-date">
+            <span>Monday</span>
+            <span>•</span>
+            <span>00 June 2026</span>
+            <span>•</span>
+            <span>10:00 AM</span>
+        </div>
+        <a href="#section-1">View Our Journey</a>
+    </div>
+
+    <!-- JOURNEY -->
+    <section id="section-1">
+        <div class="gallery">
+            <div class="sub-gallery">
+                <h3 class="sub-gallery-title">Who We Are</h3>
+                <div class="sub-gallery-title-line"></div>
+                <div class="gallery-grid">
+                    <img src="images/1.jpg" alt="Professional photo 1">
+                    <img src="images/2.jpg" alt="Professional photo 2">
+                </div>
+                <p>
+                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-2">
+        <div class="gallery">
+            <div class="sub-gallery">
+                <h3 class="sub-gallery-title">How We Met</h3>
+                <div class="sub-gallery-title-line"></div>
+                <div class="gallery-grid">
+                    <img src="images/1.jpg" alt="How we met photo 1">
+                    <img src="images/2.jpg" alt="How we met photo 2">
+                    <img src="images/3.jpg" alt="How we met photo 3">
+                    <img src="images/4.jpg" alt="How we met photo 4">
+                </div>
+                <p>
+                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="section-3">
+        <div class="gallery">
+            <div class="sub-gallery">
+                <h3 class="sub-gallery-title">Pre‑Nup Photos</h3>
+                <div class="sub-gallery-title-line"></div>
+                <div class="gallery-grid">
+                    <img src="images/1.jpg" alt="Pre-nup photo 1">
+                    <img src="images/2.jpg" alt="Pre-nup photo 2">
+                    <img src="images/3.jpg" alt="Pre-nup photo 3">
+                    <img src="images/4.jpg" alt="Pre-nup photo 4">        
+                </div>
+                <p>
+                    There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <section id="section-4" class="content">
+      <div>
+        <div class="section-title">The celebration</div>
+        <h2 class="section-heading">Join us as we say “I do”</h2>
+        <p class="section-text">
+          With great joy, we invite you to share in our happiness as we unite in marriage.
+        </p>
+
+        <div class="details-grid">
+          <div>
+            <div class="detail-label">Ceremony</div>
+            <div class="detail-value">10:00 AM<br>St. Anthony de Padua Church</div>
+          </div>
+          <div>
+            <div class="detail-label">Reception</div>
+            <div class="detail-value">12:00 PM<br>The Albario Residence</div>
+          </div>
+          <div>
+            <div class="detail-label">Dress code</div>
+            <div class="detail-value">Formal Attire</div>
+          </div>
+          <div>
+            <div class="detail-label">Location</div>
+            <div class="detail-value">San Antonio, Biri</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="vertical-divider"></div>
+
+      <div>
+        <div class="rsvp-card">
+          <div class="rsvp-title">RSVP</div>
+          <p class="rsvp-text">
+            Kindly let us know if you will be able to attend by 15 May 2026.
+          </p>
+
+          <a href="mailto:youremail@example.com" class="btn btn-primary">RSVP via email</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div>We can’t wait to celebrate with you</div>
+      <div class="footer-monogram"><span>R &amp; M</span></div>
+    </footer>
+
+    <!-- Arrow/Home Button --> 
+    <button class="scroll-arrow" id="scrollBtn" aria-label="Scroll down"> ↓ </button>
+
+    <script> 
+        const sections = Array.from(document.querySelectorAll("section")); 
+        const scrollBtn = document.getElementById("scrollBtn"); 
+        let currentIndex = 0; 
+        
+        scrollBtn.addEventListener("click", () => { 
+            if (currentIndex < sections.length - 1) { 
+                currentIndex++; 
+                sections[currentIndex].scrollIntoView({ behavior: "smooth" }); 
+            } else { 
+                currentIndex = 0; 
+                window.scrollTo({ top: 0, behavior: "smooth" }); 
+            } 
+        }); 
+        
+        window.addEventListener("scroll", () => { 
+            const scrollY = window.scrollY; 
+            const section1Height = sections[0].offsetHeight; 
+            
+            // Hide button on section1 
+            if (scrollY < section1Height - 50) { 
+                scrollBtn.classList.remove("visible"); 
+            } else { 
+                scrollBtn.classList.add("visible"); 
+            } 
+            
+            // Detect bottom of page 
+            const bottomReached = 
+                window.innerHeight + window.scrollY >= document.body.offsetHeight - 10; 
+                
+            if (bottomReached) { 
+                scrollBtn.textContent = "↑"; 
+                scrollBtn.setAttribute("aria-label", "Back to top"); 
+            } else { 
+                scrollBtn.textContent = "↓"; 
+                scrollBtn.setAttribute("aria-label", "Scroll down"); 
+            } 
+            
+            // Update currentIndex based on scroll position 
+            sections.forEach((sec, i) => { 
+                const rect = sec.getBoundingClientRect(); 
+                if (rect.top <= window.innerHeight * 0.5 && rect.bottom >= window.innerHeight * 0.5) { 
+                    currentIndex = i; 
+                } 
+            }); 
+        }); 
+    </script>
+
+  </main>
+</body>
+</html>
