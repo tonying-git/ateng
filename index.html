@@ -43,9 +43,7 @@
     /* HERO SECTION */ 
     .hero { 
       min-height: 100vh; 
-      background: 
-        linear-gradient(to bottom right, var(--pink), var(--white)),
-        url("images/background-01.png") center/cover no-repeat;
+      background: linear-gradient(to top right, var(--pink), var(--white));
       display: flex; 
       flex-direction: column; 
       justify-content: center; 
@@ -108,17 +106,35 @@
       text-decoration: none; 
       border-radius: 40px; 
       font-size: clamp(1rem, 3vw, 1.2rem); 
-      transition: 0.3s; } 
+      transition: 0.3s; 
+    } 
       
     .hero a:hover { 
       background: var(--pink); 
-      color: var(--green); }
+      color: var(--green); 
+    }
 
     /* SECTIONS */ 
     section { 
       padding: 60px 8%; 
+      text-align: center;
+    }
+
+     #section-1 { 
       background: linear-gradient(to bottom right, var(--pink), var(--white)); 
-      text-align: center; }
+    }
+
+     #section-2 { 
+      background: linear-gradient(to top right, var(--pink), var(--white)); 
+    }
+
+    #section-3 { 
+      background: linear-gradient(to bottom right, var(--pink), var(--white)); 
+    }
+
+    #section-4 { 
+      background: linear-gradient(to top right, var(--pink), var(--white)); 
+    }
 
     /* TITLES */
     .sub-gallery-title {
